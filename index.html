@@ -4,27 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>C# WASM JQuery Wrapper Prototype - WasmPrototype.Mvc</title>
-    <link rel="stylesheet" href="./lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/site.css" />
-    <script src="./lib/jquery/dist/jquery.min.js"></script>
-    <script src="./lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>    
-    <script src="./js/ManagedObject.js"></script>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.css" />
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/ManagedObject.js"></script>
     
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <script type="text/javascript" src="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/require.js"></script>
-    <script type="text/javascript" src="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/mono-config.js"></script>
-    <script type="text/javascript" src="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/uno-config.js"></script>
-    <script type="text/javascript" src="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/uno-bootstrap.js"></script>
-    <script async type="text/javascript" src="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/dotnet.js"></script>
-    <link rel="stylesheet" type="text/css" href="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="./package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505/uno-bootstrap.css" />
+    <script type="text/javascript" src="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/require.js"></script>
+    <script type="text/javascript" src="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/mono-config.js"></script>
+    <script type="text/javascript" src="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/uno-config.js"></script>
+    <script type="text/javascript" src="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/uno-bootstrap.js"></script>
+    <script async type="text/javascript" src="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/dotnet.js"></script>
+    <link rel="stylesheet" type="text/css" href="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555/uno-bootstrap.css" />
 
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
             <div class="container">
                 <a class="navbar-brand" href="/">C# WASM JQuery Wrapper Prototype</a>
             </div>
@@ -52,33 +52,79 @@
     <p>This application requires Javascript and WebAssembly to be enabled.</p>
 </noscript>
 
-<div><small>WASM Package: package_2bd82c7aebbda97bc86bfb7963b6c1b9a1fa2505</small></div>
+<div><small>WASM Package: package_acff8baeeb4c83ef3371bfe56fcd4105b79f0555</small></div>
 
-<p>
-    This demo serves as a proof-of-concept of creating a managed C#WASM wrapper for JQuery, which in turn facilitates
-    DOM manipulation from C#WASM.
-</p>
-<p>
-    We setup buttons which make JS->C# interop calls, and the C# type responds in turn by making C#->JQuery calls to further manipulate the DOM.
-    The C# type has a simple counter to track how many clicks have been made, and also holds a collection of rows.
-</p>
-<p>
-    All of the C# is running client side inside the browser as WebAssembly.
-    For additional information and source code see: <a href="https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt">https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt</a>
-</p>
+<div class="container">
+    <p>
+        This demo serves as a proof-of-concept of creating a managed C#WASM wrapper for JQuery, which in turn facilitates
+        DOM manipulation from C#WASM and ability to handle DOM events with C# handlers.
+    </p>
+    <p>
+        All of the C# is running client side inside the browser as WebAssembly.
+        For additional information and source code see: <a href="https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt">https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt</a>
+    </p>
+</div>
 
-<div class="container-fluid" id="playground">
+
+<ul class="nav nav-tabs">
+    <li class="nav-item">
+        <a class="nav-link active" data-toggle="tab" href="#serratedvalidation">C# Client Side Validation</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#serratedbutton">C# Client Side Button Handler</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane container active" id="serratedvalidation">
+        <div class="container-fluid" id="luhndemo">
+            <p>
+                In this demo the client-side C#WASM subscribes to JQuery <code>on('input',...)</code> event.  
+                The C# handler updates the form via <code>JQUery.add/removeClass()</code> based on whether the number has a valid check digit.
+                The handler also tracks the number of events it has handled and echos the count to the form.
+            </p>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <label for="textbox1">Credit Card #</label>
+                    <input type="text" class="form-control" id="textbox1" value="">
+                    <div class="valid-feedback">
+                        Valid Luhn checkdigit.
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Luhn checkdigit.
+                    </div>
+                    <small class="form-text text-muted">The C# client-side handler has handled <span id="typedCount">0</span> input events. <span id="fun"></span></small>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane container fade" id="serratedbutton">
+        <p>
+            We setup button which makes JS->C# interop calls, and the C# type responds in turn by making C#->JQuery calls by manipulating the DOM in various ways.
+            The C# type has a simple counter to track how many clicks have been made, and also holds a collection of rows.
+        </p>
+        <div class="container-fluid" id="ctrl">
+
+        </div>
+        <div class="container-fluid" id="playground">
+
+        </div>
+    </div>
 
 </div>
+
+
+
+
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-muted bg-dark">
         <div class="container">
             &copy; 2022 - Ersatz Errand
         </div>
     </footer>
-      <script src="./js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
+      <script src="/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0"></script>
     
 </body>
 </html>
