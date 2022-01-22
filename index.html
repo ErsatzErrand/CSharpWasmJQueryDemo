@@ -13,16 +13,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <script type="text/javascript" src="./package_8e801f28ea1f616931b94b104e681cdb511ec894/require.js"></script>
-    <script type="text/javascript" src="./package_8e801f28ea1f616931b94b104e681cdb511ec894/mono-config.js"></script>
-    <script type="text/javascript" src="./package_8e801f28ea1f616931b94b104e681cdb511ec894/uno-config.js"></script>
-    <script type="text/javascript" src="./package_8e801f28ea1f616931b94b104e681cdb511ec894/uno-bootstrap.js"></script>
-    <script async type="text/javascript" src="./package_8e801f28ea1f616931b94b104e681cdb511ec894/dotnet.js"></script>
-    <link rel="stylesheet" type="text/css" href="./package_8e801f28ea1f616931b94b104e681cdb511ec894/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="./package_8e801f28ea1f616931b94b104e681cdb511ec894/uno-bootstrap.css" />
+    <script type="text/javascript" src="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/require.js"></script>
+    <script type="text/javascript" src="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/mono-config.js"></script>
+    <script type="text/javascript" src="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/uno-config.js"></script>
+    <script type="text/javascript" src="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/uno-bootstrap.js"></script>
+    <script async type="text/javascript" src="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/dotnet.js"></script>
+    <link rel="stylesheet" type="text/css" href="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b/uno-bootstrap.css" />
 
 </head>
-<body>
+<body style="padding-bottom:30px">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-2">
             <div class="container">
@@ -30,7 +30,7 @@
             </div>
         </nav>
     </header>
-    <div class="container-fluid">
+    <div class="container-fluid px-1 px-sm-3">
         <main role="main" class="pb-3">
             
 
@@ -53,17 +53,14 @@
 </noscript>
 
 <div class="row"><div class="col-12 text-break">
-    <small>WASM Package: package_8e801f28ea1f616931b94b104e681cdb511ec894</small>
+    <small>WASM Package: package_47e89ee7f98b4ae7b9258cdf097e50db93ad313b</small>
 </div></div>
 
 <div class="row">
-    <div class="col-12">
-        <p>
-            This demo serves as a proof-of-concept of creating a managed C#WASM wrapper for JQuery, which in turn facilitates
-            DOM manipulation from C#WASM and ability to handle DOM events with C# handlers.
-        </p>
+    <div class="col-12 ">        
         <p class="text-break">
-            All of the C# is running client side inside the browser as WebAssembly.
+            This proof-of-concept demos a managed C#WASM wrapper for JQuery, which facilitates
+            DOM manipulation and event handling from C#WASM. All C# is running client side inside the browser as WebAssembly.
             For additional information and source code see: <a href="https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt">https://github.com/ErsatzErrand/CSharpWasmJQueryDomInteropt</a>
         </p>
     </div>
@@ -73,10 +70,10 @@
     <div class="col-12">
         <ul class="nav nav-tabs">
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#serratedvalidation">C# Client Side Validation</a>
+                <a class="nav-link active small px-3" data-toggle="tab" href="#serratedvalidation">C# Client Side<br/> Validation</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#serratedbutton">C# Client Side Button Handler</a>
+                <a class="nav-link small px-3" data-toggle="tab" href="#serratedbutton">C# Client Side<br /> Button Handler</a>
             </li>
         </ul>
         <div class="tab-content">
@@ -95,25 +92,21 @@
                 <div class="invalid-feedback">
                     Invalid Luhn checkdigit.
                 </div>
-                <small class="form-text text-muted">The C# client-side handler has handled <span id="typedCount">0</span> input events. <span id="fun"></span></small>
+                <small class="form-text text-muted">The C# client-side handler has handled <span id="typedCount">0</span> input events. <br/> <span id="fun"></span></small>
 
             </div>
 
             <div class="tab-pane container fade" id="serratedbutton">
-                <div class="row">
-                    <div class="col-12">
                         <p>
                             We setup button which makes JS->C# interop calls, and the C# type responds in turn by making C#->JQuery calls by manipulating the DOM in various ways.
                             The C# type has a simple counter to track how many clicks have been made, and also holds a collection of rows.
                         </p>
-                        <div class="container-fluid" id="ctrl">
+                        <div class="container-fluid px-1 px-sm-3" id="ctrl">
 
                         </div>
-                        <div class="container-fluid" id="playground">
+                        <div class="container-fluid px-1 px-sm-3" id="playground">
 
                         </div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
